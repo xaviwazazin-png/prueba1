@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculo Yermista</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="panel">
+      <div id="lobbyView" class="view active">
+        <div class="card">
+          <div class="brand">
+            <img class="brain-logo" src="./logo.png" alt="Logo Calculo Yermista">
+            <div>
+              <h1 class="title">Calculo Yermista</h1>
+              <p class="subtitle">Entrena tu mente con operaciones del 1 al 10, responde rapido y supera tu mejor record.</p>
+            </div>
+            <div class="record-chip">Mejor record: <span id="lobbyBestScore">0</span></div>
+            <div class="record-chip">Puntaje acumulado: <span id="lobbyTotalScore">0</span></div>
+          </div>
+
+          <div class="mode-grid">
+            <button class="mode-button" data-mode="sum">Sumas 1-10</button>
+            <button class="mode-button" data-mode="sub">Restas 1-10</button>
+            <button class="mode-button" data-mode="mul">Multiplicaciones 1-10</button>
+            <button class="mode-button" data-mode="div">Divisiones 1-10</button>
+            <button class="mode-button complement-button" data-mode="comp10">Complemento a 10</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="gameView" class="view">
+        <div class="game-shell">
+          <div class="game-top">
+            <div class="pill">
+              <span class="pill-label">Modo</span>
+              <span id="modeName" class="pill-value">Sumas 1-10</span>
+            </div>
+            <div class="pill">
+              <span class="pill-label">Puntaje</span>
+              <span id="liveScore" class="pill-value">0</span>
+            </div>
+          </div>
+
+          <div class="card operation-card">
+            <div class="operation-stack">
+              <div id="standardOperation" class="operation-display active">
+                <div id="operationText" class="operation-text">3 + 4</div>
+                <input id="answerInput" class="answer-input" type="number" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="?" aria-label="Respuesta">
+              </div>
+
+              <div id="complementOperation" class="operation-display complement-display">
+                <div class="complement-row">
+                  <span id="complementPrefix" class="operation-text">7 +</span>
+                  <input id="complementInput" class="answer-input complement-input" type="number" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="?" aria-label="Complemento a 10">
+                  <span id="complementSuffix" class="operation-text">= 10</span>
+                </div>
+              </div>
+
+              <p class="helper-text">Escribe tu respuesta y presiona Enter para pasar a la siguiente operacion.</p>
+            </div>
+          </div>
+
+          <div class="timer-wrap">
+            <div class="timer-bar" aria-label="Tiempo restante">
+              <div id="timerFill" class="timer-fill"></div>
+            </div>
+            <p class="helper-text">Tiempo restante: <span id="timeLeftText">60.0</span>s</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="resultView" class="view">
+        <div class="card">
+          <div class="brand">
+            <h2 class="title">Tiempo terminado</h2>
+            <p class="subtitle">Revisa tu puntaje y vuelve al lobby para seguir practicando.</p>
+          </div>
+
+          <div class="result-grid">
+            <div class="result-box">
+              <span class="pill-label">Puntaje total</span>
+              <span id="finalScore" class="result-number">0</span>
+            </div>
+            <div class="result-box">
+              <span class="pill-label">Mejor record</span>
+              <span id="bestScore" class="result-number">0</span>
+            </div>
+            <div class="result-box">
+              <span class="pill-label">Puntaje acumulado</span>
+              <span id="totalScore" class="result-number">0</span>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button id="retryButton" class="primary-action">Reintentar</button>
+            <button id="backToLobbyButton" class="secondary-action">Volver al lobby</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
