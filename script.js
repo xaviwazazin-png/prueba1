@@ -158,15 +158,15 @@
     divHalf: {
       label: "Divisiones 0.5",
       display: "standard",
-      explanation: "Divide números con incrementos de 0.5. Utiliza números de hasta 50 con pasos de 0.5.",
-      example: "7.5 / 1.5 = 5",
+      explanation: "Divide números del 20 al 50 por 0.5.",
+      example: "20 / 0.5 = 40",
       nextProblem() {
-        const divisor = randomHalf(1, 10);
-        const quotient = randomHalf(1, 10);
-        const dividend = divisor * quotient;
+        const dividend = randomInt(20, 50);
+        const divisor = 0.5;
+        const quotient = dividend / divisor;
         return {
-          text: `${formatHalf(dividend)} / ${formatHalf(divisor)}`,
-          answer: Number(formatHalf(quotient))
+          text: `${dividend} / 0.5`,
+          answer: quotient
         };
       }
     }
