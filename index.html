@@ -9,6 +9,12 @@
 <body>
   <main class="app-shell">
     <section class="panel">
+      <div id="loadingView" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p class="loading-text">Preparando ejercicio...</p>
+        </div>
+      </div>
       <div id="lobbyView" class="view active">
         <div class="card">
           <div class="brand">
@@ -21,12 +27,20 @@
             <div class="record-chip">Puntaje acumulado: <span id="lobbyTotalScore">0</span></div>
           </div>
 
-          <div class="mode-grid">
-            <button class="mode-button" data-mode="sum">Sumas 1-10</button>
-            <button class="mode-button" data-mode="sub">Restas 1-10</button>
-            <button class="mode-button" data-mode="mul">Multiplicaciones 1-10</button>
-            <button class="mode-button" data-mode="div">Divisiones 1-10</button>
-            <button class="mode-button complement-button" data-mode="comp10">Complemento a 10</button>
+          <ul class="mode-list">
+            <li class="mode-item"><button class="mode-button" data-mode="sum">Sumas 1-10</button></li>
+            <li class="mode-item"><button class="mode-button" data-mode="sub">Restas 1-10</button></li>
+            <li class="mode-item"><button class="mode-button" data-mode="mul">Multiplicaciones 1-10</button></li>
+            <li class="mode-item"><button class="mode-button" data-mode="div">Divisiones 1-10</button></li>
+            <li class="mode-item"><button class="mode-button" data-mode="mul05">Multiplicaciones 0-5</button></li>
+            <li class="mode-item"><button class="mode-button" data-mode="div05">Divisiones 0-5</button></li>
+            <li class="mode-item"><button class="mode-button" data-mode="divHalf">Divisiones 0.5</button></li>
+            <li class="mode-item"><button class="mode-button complement-button" data-mode="comp10">Complemento a 10</button></li>
+            <li class="mode-item"><button class="mode-button complement-button" data-mode="comp100">Complemento a 100</button></li>
+          </ul>
+
+          <div class="action-row">
+            <button id="recordButton" class="secondary-action">Registro</button>
           </div>
         </div>
       </div>
@@ -94,9 +108,69 @@
             </div>
           </div>
 
+          <p id="resultInstructions" class="view-instructions">Pulsa "Volver al lobby" para elegir otro módulo o revisar tu registro.</p>
+
           <div class="action-row">
             <button id="retryButton" class="primary-action">Reintentar</button>
             <button id="backToLobbyButton" class="secondary-action">Volver al lobby</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="confirmView" class="view">
+        <div class="card">
+          <div class="brand">
+            <h2 class="title" id="confirmModeName">Sumas 1-10</h2>
+            <p class="subtitle">¿Estás listo para empezar? Tienes 60 segundos.</p>
+          </div>
+
+          <p id="confirmInstructions" class="view-instructions">Lee las indicaciones antes de comenzar. Presiona "Comenzar" para iniciar el entrenamiento.</p>
+
+          <div class="action-row">
+            <button id="confirmStartButton" class="primary-action">Comenzar</button>
+            <button id="confirmBackButton" class="secondary-action">Regresar al lobby</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="countdownView" class="view">
+        <div class="card">
+          <div class="brand">
+            <h2 class="title" id="countdownModeTitle">Sumas 1-10</h2>
+          </div>
+
+          <div class="countdown-content">
+            <div id="countdownNumber" class="countdown-timer">3</div>
+            
+            <div class="explanation-section">
+              <h3 id="explanationTitle" class="explanation-title">Cómo funciona:</h3>
+              <p id="explanationText" class="explanation-text">Aquí irá la explicación del ejercicio.</p>
+              
+              <div class="example-section">
+                <h4 class="example-title">Ejemplo:</h4>
+                <div id="exampleBox" class="example-box">
+                  <p id="exampleText">2 + 3 = ?</p>
+                  <p id="exampleAnswer">Respuesta: 5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="recordView" class="view">
+        <div class="card">
+          <div class="brand">
+            <h2 class="title">Registro de Entrenamientos</h2>
+            <p class="subtitle">Tu progreso en cada módulo</p>
+          </div>
+
+          <div id="statsContainer" class="stats-container">
+            <!-- Se llenará dinámicamente con JavaScript -->
+          </div>
+
+          <div class="action-row">
+            <button id="recordBackButton" class="secondary-action">Volver al lobby</button>
           </div>
         </div>
       </div>
