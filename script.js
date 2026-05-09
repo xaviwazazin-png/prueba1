@@ -158,7 +158,7 @@
     divHalf: {
       label: "Divisiones 0.5",
       display: "standard",
-      explanation: "Divide números con incrementos de 0.5. Usa números de hasta 50 con pasos de medio punto.",
+      explanation: "Divide números con incrementos de 0.5. Utiliza números de hasta 50 con pasos de 0.5.",
       example: "7.5 / 1.5 = 5",
       nextProblem() {
         const divisor = randomHalf(1, 10);
@@ -347,11 +347,11 @@
         <div class="stat-card">
           <h3 class="stat-title">${label}</h3>
           <div class="stat-row">
-            <span class="stat-label">Entrenamientos:</span>
+            <span class="stat-label">Sesiones:</span>
             <span class="stat-value">${stats.times}</span>
           </div>
           <div class="stat-row">
-            <span class="stat-label">Puntos:</span>
+            <span class="stat-label">Puntos acumulados:</span>
             <span class="stat-value">${stats.points}</span>
           </div>
         </div>
