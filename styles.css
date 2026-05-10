@@ -447,6 +447,7 @@ button:active {
   justify-content: center;
   gap: 14px;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .primary-action {
