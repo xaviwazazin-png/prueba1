@@ -31,9 +31,9 @@ body {
 body {
   overflow-x: hidden;
   overflow-y: auto;
-  background: linear-gradient(-45deg, #bfe0ff, #ded0ff, #cef5d8, #f7e0ff);
-  background-size: 400% 400%;
-  animation: gradientShift 18s ease infinite;
+  background: linear-gradient(-45deg, #9cc5ff, #c4a7ff, #b1f9d8, #f7c6ff);
+  background-size: 500% 500%;
+  animation: gradientShift 14s ease infinite;
   position: relative;
 }
 
@@ -67,7 +67,9 @@ body::after {
 
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
+  25% { background-position: 50% 0%; }
   50% { background-position: 100% 50%; }
+  75% { background-position: 50% 100%; }
   100% { background-position: 0% 50%; }
 }
 
@@ -168,6 +170,7 @@ p {
   font-size: 1rem;
   line-height: 1.5;
   max-width: 560px;
+  margin: 0 auto;
 }
 
 .mode-list {
@@ -190,6 +193,8 @@ p {
   text-align: left;
   padding: 20px 22px;
   border-radius: 0;
+  border: 1px solid rgba(94, 122, 183, 0.38);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 button {
