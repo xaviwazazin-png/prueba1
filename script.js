@@ -51,6 +51,7 @@
     mode: null,
     score: 0,
     timeLeft: GAME_DURATION,
+    totalTime: GAME_DURATION,
     running: false,
     currentAnswer: null,
     lastTimestamp: 0,
@@ -168,6 +169,41 @@
           text: `${dividend} / 0.5`,
           answer: quotient
         };
+      }
+    },
+    mul06: {
+      label: "Multiplicaciones 0-6",
+      display: "standard",
+      explanation: "Multiplica dos números del 0 al 6. Calcula el producto correctamente.",
+      example: "4 x 5 = 20",
+      nextProblem() {
+        const a = randomInt(0, 6);
+        const b = randomInt(0, 6);
+        return { text: `${a} x ${b}`, answer: a * b };
+      }
+    },
+    div06: {
+      label: "Divisiones 0-6",
+      display: "standard",
+      explanation: "Divide dos números del 0 al 6. El resultado siempre es exacto (sin decimales).",
+      example: "18 / 3 = 6",
+      nextProblem() {
+        const divisor = randomInt(1, 6);
+        const quotient = randomInt(0, 6);
+        const dividend = divisor * quotient;
+        return { text: `${dividend} / ${divisor}`, answer: quotient };
+      }
+    },
+    mul05_120: {
+      label: "Multiplicaciones 0-5 (120 seg)",
+      display: "standard",
+      explanation: "Multiplica dos números del 0 al 5. Calcula el producto con rapidez en 120 segundos.",
+      example: "3 x 4 = 12",
+      duration: 120,
+      nextProblem() {
+        const a = randomInt(0, 5);
+        const b = randomInt(0, 5);
+        return { text: `${a} x ${b}`, answer: a * b };
       }
     }
   };
@@ -311,7 +347,7 @@
   }
 
   function updateTimerVisual() {
-    const ratio = Math.max(0, state.timeLeft / GAME_DURATION);
+    const ratio = Math.max(0, state.timeLeft / state.totalTime);
     timerFill.style.width = `${ratio * 100}%`;
     timerFill.classList.toggle("low", ratio < 0.25);
     timeLeftText.textContent = state.timeLeft.toFixed(1);
@@ -333,7 +369,7 @@
   }
 
   function showRecordView() {
-    const allModes = ["sum", "sub", "mul", "div", "mul05", "div05", "divHalf", "comp10", "comp100"];
+    const allModes = ["sum", "sub", "mul", "div", "mul05", "div05", "divHalf", "comp10", "comp100", "mul06", "div06", "mul05_120"];
     let totalPoints = 0;
     
     let html = '<div class="stats-grid">';
@@ -410,7 +446,8 @@
   function startGame(mode) {
     state.mode = mode;
     state.score = 0;
-    state.timeLeft = GAME_DURATION;
+    state.totalTime = modeConfig[mode].duration || GAME_DURATION;
+    state.timeLeft = state.totalTime;
     state.running = true;
     state.lastTimestamp = 0;
 
